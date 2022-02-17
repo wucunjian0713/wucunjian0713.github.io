@@ -1,5 +1,5 @@
 ---
-title: ClickHouse初识
+title:  ClickHouse初识
 description: `ClickHouse`是一个用于联机分析 (`OLAP`) 的列式数据库管理系统 (`DBMS`). 由俄罗斯搜索引擎巨头 Yandex 开源. 主要用于数据分析领域, 目前国内社区火热, 各个大厂纷纷跟进大规模用于 OLAP 领域。
 categories:
  - 数据库
