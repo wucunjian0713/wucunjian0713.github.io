@@ -1,8 +1,8 @@
 ---
 title: ClickHouse初识
-description: NexT is a high quality elegant Jekyll theme ported from Hexo Next. It is crafted from scratch, with love.
+description: `ClickHouse`是一个用于联机分析 (`OLAP`) 的列式数据库管理系统 (`DBMS`). 由俄罗斯搜索引擎巨头 Yandex 开源. 主要用于数据分析领域, 目前国内社区火热, 各个大厂纷纷跟进大规模用于 OLAP 领域。
 categories:
- - tutorial
+ - 数据库
 tags:
 ---
 
