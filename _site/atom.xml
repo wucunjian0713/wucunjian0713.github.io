@@ -1,175 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-17T14:34:47+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">NexT</title><subtitle>Elegant theme for Jekyll.</subtitle><author><name>John Doe</name></author><entry><title type="html">Next Theme Tutorial</title><link href="http://localhost:4000/tutorial/2017/07/20/next-tutorial/" rel="alternate" type="text/html" title="Next Theme Tutorial" /><published>2017-07-20T00:00:00+08:00</published><updated>2017-07-20T00:00:00+08:00</updated><id>http://localhost:4000/tutorial/2017/07/20/next-tutorial</id><content type="html" xml:base="http://localhost:4000/tutorial/2017/07/20/next-tutorial/">&lt;blockquote&gt;
-  &lt;p&gt;NexT is a high quality elegant &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; theme ported from &lt;a href=&quot;https://github.com/iissnan/hexo-theme-next&quot;&gt;Hexo Next&lt;/a&gt;. It is crafted from scratch, with love.&lt;/p&gt;
-&lt;/blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-18T09:19:34+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">NexT</title><author><name>John Doe</name></author><entry><title type="html">ClickHouse初始</title><link href="http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%BA%93/2022/02/17/ClickHouse%E5%88%9D%E8%AF%86/" rel="alternate" type="text/html" title="ClickHouse初始" /><published>2022-02-17T00:00:00+08:00</published><updated>2022-02-17T00:00:00+08:00</updated><id>http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%BA%93/2022/02/17/ClickHouse%E5%88%9D%E8%AF%86</id><content type="html" xml:base="http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%BA%93/2022/02/17/ClickHouse%E5%88%9D%E8%AF%86/">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ClickHouse&lt;/code&gt;是一个用于联机分析 (&lt;code class=&quot;highlighter-rouge&quot;&gt;OLAP&lt;/code&gt;) 的列式数据库管理系统 (&lt;code class=&quot;highlighter-rouge&quot;&gt;DBMS&lt;/code&gt;). 由俄罗斯搜索引擎巨头 Yandex 开源. 主要用于数据分析领域, 目前国内社区火热, 各个大厂纷纷跟进大规模用于 OLAP 领域。&lt;/p&gt;
 
-&lt;!-- more --&gt;
+&lt;h2 id=&quot;1clickhouse简介&quot;&gt;1.ClickHouse简介&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://simpleyyt.github.io/jekyll-theme-next/&quot;&gt;Live Preview&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ClickHouse&lt;/code&gt;是一个用于联机分析 (&lt;code class=&quot;highlighter-rouge&quot;&gt;OLAP&lt;/code&gt;) 的列式数据库管理系统 (&lt;code class=&quot;highlighter-rouge&quot;&gt;DBMS&lt;/code&gt;). 由俄罗斯搜索引擎巨头 Yandex 开源. 主要用于数据分析领域, 目前国内社区火热, 各个大厂纷纷跟进大规模用于 OLAP 领域。&lt;/p&gt;
 
-&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;ClickHouse官网上面介绍的特性：&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Desktop
-&lt;img src=&quot;http://iissnan.com/nexus/next/desktop-preview.png&quot; alt=&quot;Desktop Preview&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Sidebar&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;快速&lt;/strong&gt;：ClickHouse会充分利用所有可用的硬件，以尽可能快地处理每个查询。单个查询的峰值处理性能超过每秒 2 TB（解压缩后，仅使用的列）。在分布式设置中，读取是在健康副本之间自动平衡的，以避免增加延迟。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;容错&lt;/strong&gt;：ClickHouse支持多主机异步复制，并且可以跨多个数据中心进行部署。所有节点都相等，这可以避免出现单点故障。单个节点或整个数据中心的停机时间不会影响系统的读写可用性。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;可伸缩&lt;/strong&gt;：ClickHouse可以在垂直和水平方向上很好地缩放。 ClickHouse易于调整以在具有数百或数千个节点的群集上或在单个服务器上，甚至在小型虚拟机上执行。当前，每个单节点安装的数据量超过数万亿行或数百兆兆字节。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;易用&lt;/strong&gt;：ClickHouse简单易用，开箱即用。它简化了所有数据处理：将所有结构化数据吸收到系统中，并且立即可用于构建报告。 SQL允许表达期望的结果，而无需涉及某些DBMS中可以找到的任何自定义非标准API。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://iissnan.com/nexus/next/desktop-sidebar-preview.png&quot; alt=&quot;Desktop Sidebar Preview&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;2clickhouse安装教程&quot;&gt;2.ClickHouse安装教程&lt;/h2&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Sidebar (Post details page)&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;ClickHouse 可以在任何具有 x86_64 ，AArch64 或 PowerPC64LE CPU 架构的 Linux ，FreeBSD 或 Mac OS X 上运行。貌似不能在 Windows 系统下安装，不过 ClickHouse 同样支持 Docker 部署，Windows 系统可以在 Docker 下安装 ClickHouse 。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://iissnan.com/nexus/next/desktop-sidebar-toc.png&quot; alt=&quot;Desktop Sidebar Preview&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;下面以CentOS系统为例，以rpm方式来安装ClickHouse。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Mobile&lt;/li&gt;
-&lt;/ul&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 查看系统版本&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@master ~]# more /etc/redhat-release 
+CentOS Linux release 7.9.2009 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Core&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://iissnan.com/nexus/next/mobile.png&quot; alt=&quot;Mobile Preview&quot; /&gt;&lt;/p&gt;
+&lt;span class=&quot;c&quot;&gt;# 检测当前CPU是否支持SSE 4.2&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@master ~]# &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt; sse4_2 /proc/cpuinfo &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;SSE 4.2 supported&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;SSE 4.2 not supported&quot;&lt;/span&gt;
+SSE 4.2 supported
 
-&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;span class=&quot;c&quot;&gt;# 添加官方存储库&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;yum install yum-utils
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;rpm &lt;span class=&quot;nt&quot;&gt;--import&lt;/span&gt; https://repo.clickhouse.tech/CLICKHOUSE-KEY.GPG
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;yum-config-manager &lt;span class=&quot;nt&quot;&gt;--add-repo&lt;/span&gt; https://repo.clickhouse.tech/rpm/stable/x86_64
 
-&lt;p&gt;Check whether you have &lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby 2.1.0&lt;/code&gt; or higher installed:&lt;/p&gt;
+&lt;span class=&quot;c&quot;&gt;# 安装clickhouse&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;yum install clickhouse-server clickhouse-client
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ruby &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;span class=&quot;c&quot;&gt;# 启动clickhouse&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; /etc/init.d/clickhouse-server start
 
-&lt;p&gt;Install &lt;code class=&quot;highlighter-rouge&quot;&gt;Bundler&lt;/code&gt;:&lt;/p&gt;
+&lt;span class=&quot;c&quot;&gt;# 进入clickhouse客户端&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@master ~]# clickhouse-client
+ClickHouse client version 21.12.3.32 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;official build&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Connecting to localhost:9000 as user default.
+Connected to ClickHouse server version 21.12.3 revision 54452.
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install bundler
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;span class=&quot;c&quot;&gt;# 开启远程连接&lt;/span&gt;
 
-&lt;p&gt;Clone Jacman theme:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/Simpleyyt/jekyll-theme-next.git
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;jekyll-theme-next
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Install Jekyll and other dependencies from the GitHub Pages gem:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle install
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Run your Jekyll site locally:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;More Details：&lt;a href=&quot;https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/&quot;&gt;Setting up your GitHub Pages site locally with Jekyll&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;features&quot;&gt;Features&lt;/h2&gt;
-
-&lt;h3 id=&quot;multiple-languages-support-including-english--russian--french--german--simplified-chinese--traditional-chinese&quot;&gt;Multiple languages support, including: English / Russian / French / German / Simplified Chinese / Traditional Chinese.&lt;/h3&gt;
-
-&lt;p&gt;Default language is English.&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;en&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# language: zh-Hans&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# language: fr-FR&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# language: zh-hk&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# language: zh-tw&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# language: ru&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# language: de&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Set &lt;code class=&quot;highlighter-rouge&quot;&gt;language&lt;/code&gt; field as following in site &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; to change to Chinese.&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;zh-Hans&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;comment-support&quot;&gt;Comment support.&lt;/h3&gt;
-
-&lt;p&gt;NexT has native support for &lt;code class=&quot;highlighter-rouge&quot;&gt;DuoShuo&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Disqus&lt;/code&gt; comment systems.&lt;/p&gt;
-
-&lt;p&gt;Add the following snippets to your &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;duoshuo&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;enable&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;shortname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-duoshuo-shortname&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;OR&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;disqus_shortname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-disqus-shortname&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;social-media&quot;&gt;Social Media&lt;/h3&gt;
-
-&lt;p&gt;NexT can automatically add links to your Social Media accounts:&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;social&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;GitHub&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-github-url&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;Twitter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-twitter-url&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;Weibo&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-weibo-url&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;DouBan&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-douban-url&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;ZhiHu&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-zhihu-url&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;feed-link&quot;&gt;Feed link.&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Show a feed link.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Set &lt;code class=&quot;highlighter-rouge&quot;&gt;rss&lt;/code&gt; field in theme’s &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;, as the following value:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rss: false&lt;/code&gt; will totally disable feed link.&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rss:  &lt;/code&gt; use sites’ feed link. This is the default option.&lt;/p&gt;
-
-    &lt;p&gt;Follow the installation instruction in the plugin’s README. After the configuration is done for this plugin, the feed link is ready too.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rss: http://your-feed-url&lt;/code&gt; set specific feed link.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;up-to-5-code-highlight-themes-built-in&quot;&gt;Up to 5 code highlight themes built-in.&lt;/h3&gt;
-
-&lt;p&gt;NexT uses &lt;a href=&quot;https://github.com/chriskempson/tomorrow-theme&quot;&gt;Tomorrow Theme&lt;/a&gt; with 5 themes for you to choose from.
-Next use &lt;code class=&quot;highlighter-rouge&quot;&gt;normal&lt;/code&gt; by default. Have a preview about &lt;code class=&quot;highlighter-rouge&quot;&gt;normal&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;night&lt;/code&gt;:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://iissnan.com/nexus/next/tomorrow-normal.png&quot; alt=&quot;Tomorrow Normal Preview&quot; /&gt;
-&lt;img src=&quot;http://iissnan.com/nexus/next/tomorrow-night.png&quot; alt=&quot;Tomorrow Night Preview&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Head over to &lt;a href=&quot;https://github.com/chriskempson/tomorrow-theme&quot;&gt;Tomorrow Theme&lt;/a&gt; for more details.&lt;/p&gt;
-
-&lt;h2 id=&quot;configuration&quot;&gt;Configuration&lt;/h2&gt;
-
-&lt;p&gt;NexT comes with few configurations.&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;c1&quot;&gt;# Menu configuration.&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;menu&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;archives&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/archives&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Favicon&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;favicon&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/favicon.ico&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Avatar (put the image into next/source/images/)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# can be any image format supported by web browsers (JPEG,PNG,GIF,SVG,..)&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;avatar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/default_avatar.png&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Code highlight theme&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# available: normal | night | night eighties | night blue | night bright&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;highlight_theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;normal&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Fancybox for image gallery&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;fancybox&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Specify the date when the site was setup&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;since&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2013&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;browser-support&quot;&gt;Browser support&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://iissnan.com/nexus/next/browser-support.png&quot; alt=&quot;Browser support&quot; /&gt;&lt;/p&gt;</content><author><name>John Doe</name></author><summary type="html">NexT is a high quality elegant Jekyll theme ported from Hexo Next. It is crafted from scratch, with love. Live Preview Screenshots Desktop Sidebar Sidebar (Post details page) Mobile Installation Check whether you have Ruby 2.1.0 or higher installed: ruby --version Install Bundler: gem install bundler Clone Jacman theme: git clone https://github.com/Simpleyyt/jekyll-theme-next.git cd jekyll-theme-next Install Jekyll and other dependencies from the GitHub Pages gem: bundle install Run your Jekyll site locally: bundle exec jekyll server More Details：Setting up your GitHub Pages site locally with Jekyll Features Multiple languages support, including: English / Russian / French / German / Simplified Chinese / Traditional Chinese. Default language is English. language: en # language: zh-Hans # language: fr-FR # language: zh-hk # language: zh-tw # language: ru # language: de Set language field as following in site _config.yml to change to Chinese. language: zh-Hans Comment support. NexT has native support for DuoShuo and Disqus comment systems. Add the following snippets to your _config.yml: duoshuo: enable: true shortname: your-duoshuo-shortname OR disqus_shortname: your-disqus-shortname Social Media NexT can automatically add links to your Social Media accounts: social: GitHub: your-github-url Twitter: your-twitter-url Weibo: your-weibo-url DouBan: your-douban-url ZhiHu: your-zhihu-url Feed link. Show a feed link. Set rss field in theme’s _config.yml, as the following value: rss: false will totally disable feed link. rss: use sites’ feed link. This is the default option. Follow the installation instruction in the plugin’s README. After the configuration is done for this plugin, the feed link is ready too. rss: http://your-feed-url set specific feed link. Up to 5 code highlight themes built-in. NexT uses Tomorrow Theme with 5 themes for you to choose from. Next use normal by default. Have a preview about normal and night: Head over to Tomorrow Theme for more details. Configuration NexT comes with few configurations. # Menu configuration. menu: home: / archives: /archives # Favicon favicon: /favicon.ico # Avatar (put the image into next/source/images/) # can be any image format supported by web browsers (JPEG,PNG,GIF,SVG,..) avatar: /default_avatar.png # Code highlight theme # available: normal | night | night eighties | night blue | night bright highlight_theme: normal # Fancybox for image gallery fancybox: true # Specify the date when the site was setup since: 2013 Browser support</summary></entry><entry><title type="html">Highlight Test</title><link href="http://localhost:4000/test/2017/07/19/highlight-test/" rel="alternate" type="text/html" title="Highlight Test" /><published>2017-07-19T00:00:00+08:00</published><updated>2017-07-19T00:00:00+08:00</updated><id>http://localhost:4000/test/2017/07/19/highlight-test</id><content type="html" xml:base="http://localhost:4000/test/2017/07/19/highlight-test/">&lt;p&gt;This is a highlight test.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Doe</name></author><summary type="html">ClickHouse是一个用于联机分析 (OLAP) 的列式数据库管理系统 (DBMS). 由俄罗斯搜索引擎巨头 Yandex 开源. 主要用于数据分析领域, 目前国内社区火热, 各个大厂纷纷跟进大规模用于 OLAP 领域。</summary></entry><entry><title type="html">Highlight Test</title><link href="http://localhost:4000/test/2017/07/19/highlight-test/" rel="alternate" type="text/html" title="Highlight Test" /><published>2017-07-19T00:00:00+08:00</published><updated>2017-07-19T00:00:00+08:00</updated><id>http://localhost:4000/test/2017/07/19/highlight-test</id><content type="html" xml:base="http://localhost:4000/test/2017/07/19/highlight-test/">&lt;p&gt;This is a highlight test.&lt;/p&gt;
 
 &lt;h1 id=&quot;normal-block&quot;&gt;Normal block&lt;/h1&gt;
 
@@ -219,7 +97,7 @@ Next use &lt;code class=&quot;highlighter-rouge&quot;&gt;normal&lt;/code&gt; by 
   &lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Doe</name></author><summary type="html">This is a highlight test. Normal block alert('Hello World!'); print 'helloworld' Highlight block alert( 'Hello, world!' ); print 'helloworld' def foo puts 'foo' end def foo puts 'foo' end 1 2 3 def foo puts 'foo' end #include &amp;lt;iostream&amp;gt; using namespace std; void foo(int arg1, int arg2) { } int main() { string str; foo(1, 2); cout &amp;lt;&amp;lt; &quot;Hello World&quot; &amp;lt;&amp;lt; endl; return 0; }</summary></entry><entry><title type="html">Emoji Test</title><link href="http://localhost:4000/2015/09/19/emoji-test/" rel="alternate" type="text/html" title="Emoji Test" /><published>2015-09-19T00:00:00+08:00</published><updated>2015-09-19T00:00:00+08:00</updated><id>http://localhost:4000/2015/09/19/emoji-test</id><content type="html" xml:base="http://localhost:4000/2015/09/19/emoji-test/">&lt;p&gt;This is an emoji test. :smile: lol.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>John Doe</name></author><summary type="html">This is a highlight test.</summary></entry><entry><title type="html">Emoji Test</title><link href="http://localhost:4000/2015/09/19/emoji-test/" rel="alternate" type="text/html" title="Emoji Test" /><published>2015-09-19T00:00:00+08:00</published><updated>2015-09-19T00:00:00+08:00</updated><id>http://localhost:4000/2015/09/19/emoji-test</id><content type="html" xml:base="http://localhost:4000/2015/09/19/emoji-test/">&lt;p&gt;This is an emoji test. :smile: lol.&lt;/p&gt;
 
 &lt;p&gt;See emoji cheat sheet for more detail :wink: : &lt;a href=&quot;https://www.webpagefx.com/tools/emoji-cheat-sheet/&quot;&gt;https://www.webpagefx.com/tools/emoji-cheat-sheet/&lt;/a&gt;.&lt;/p&gt;
 

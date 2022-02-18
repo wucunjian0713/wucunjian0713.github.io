@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="The following contents should be invisible in home/archive page.">
+<meta name="description" content="ClickHouse是一个用于联机分析 (OLAP) 的列式数据库管理系统 (DBMS). 由俄罗斯搜索引擎巨头 Yandex 开源. 主要用于数据分析领域, 目前国内社区火热, 各个大厂纷纷跟进大规模用于 OLAP 领域。">
 <meta name="keywords" content="Jekyll, NexT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Excerpts">
-<meta property="og:url" content="http://localhost:4000/2013/12/25/excerpts/">
+<meta property="og:title" content="ClickHouse初始">
+<meta property="og:url" content="http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%BA%93/2022/02/17/ClickHouse%E5%88%9D%E8%AF%86/">
 <meta property="og:site_name" content="NexT">
-<meta property="og:description" content="The following contents should be invisible in home/archive page.">
+<meta property="og:description" content="ClickHouse是一个用于联机分析 (OLAP) 的列式数据库管理系统 (DBMS). 由俄罗斯搜索引擎巨头 Yandex 开源. 主要用于数据分析领域, 目前国内社区火热, 各个大厂纷纷跟进大规模用于 OLAP 领域。">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Excerpts">
-<meta name="twitter:description" content="The following contents should be invisible in home/archive page.">
+<meta name="twitter:title" content="ClickHouse初始">
+<meta name="twitter:description" content="ClickHouse是一个用于联机分析 (OLAP) 的列式数据库管理系统 (DBMS). 由俄罗斯搜索引擎巨头 Yandex 开源. 主要用于数据分析领域, 目前国内社区火热, 各个大厂纷纷跟进大规模用于 OLAP 领域。">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -154,7 +154,7 @@
 
 
 
-  <title>Excerpts | NexT</title>
+  <title>ClickHouse初始 | NexT</title>
   
 
 
@@ -280,7 +280,7 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2013/12/25/excerpts/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%BA%93/2022/02/17/ClickHouse%E5%88%9D%E8%AF%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -300,7 +300,7 @@
           <h1 class="post-title" itemprop="name headline">
           
           
-            Excerpts
+            ClickHouse初始
           
         </h1>
         
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-25T08:23:23+08:00">
-                2013-12-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-02-17T00:00:00+08:00">
+                2022-02-17
               </time>
             
 
@@ -324,6 +324,29 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/%E6%95%B0%E6%8D%AE%E5%BA%93" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -366,13 +389,57 @@
 
 
 
-  <p>The following contents should be invisible in home/archive page.</p>
+  <p><code class="highlighter-rouge">ClickHouse</code>是一个用于联机分析 (<code class="highlighter-rouge">OLAP</code>) 的列式数据库管理系统 (<code class="highlighter-rouge">DBMS</code>). 由俄罗斯搜索引擎巨头 Yandex 开源. 主要用于数据分析领域, 目前国内社区火热, 各个大厂纷纷跟进大规模用于 OLAP 领域。</p>
 
-<!-- more -->
+<h2 id="1clickhouse简介">1.ClickHouse简介</h2>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna vitae velit eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Aliquam eleifend dolor vitae libero pharetra adipiscing. Etiam adipiscing dolor a quam tempor, eu convallis nulla varius. Aliquam sollicitudin risus a porta aliquam. Ut nec velit dolor. Proin eget leo lobortis, aliquam est sed, mollis mauris. Fusce vitae leo pretium massa accumsan condimentum. Fusce malesuada gravida lectus vel vulputate. Donec bibendum porta nibh ut aliquam.</p>
+<p><code class="highlighter-rouge">ClickHouse</code>是一个用于联机分析 (<code class="highlighter-rouge">OLAP</code>) 的列式数据库管理系统 (<code class="highlighter-rouge">DBMS</code>). 由俄罗斯搜索引擎巨头 Yandex 开源. 主要用于数据分析领域, 目前国内社区火热, 各个大厂纷纷跟进大规模用于 OLAP 领域。</p>
 
-<p>Sed lorem felis, congue non fringilla eu, aliquam eu eros. Curabitur orci libero, mollis sed semper vitae, adipiscing in lectus. Aenean non egestas odio. Donec sollicitudin nisi quis lorem gravida, in pharetra mauris fringilla. Duis sit amet faucibus dolor, id aliquam neque. In egestas, odio gravida tempor dictum, mauris felis faucibus purus, sit amet commodo lacus diam vitae est. Ut ut quam eget massa semper sodales. Aenean non ipsum cursus, blandit lectus in, ornare odio. Curabitur ultrices porttitor vulputate.</p>
+<p>ClickHouse官网上面介绍的特性：</p>
+
+<ul>
+  <li><strong>快速</strong>：ClickHouse会充分利用所有可用的硬件，以尽可能快地处理每个查询。单个查询的峰值处理性能超过每秒 2 TB（解压缩后，仅使用的列）。在分布式设置中，读取是在健康副本之间自动平衡的，以避免增加延迟。</li>
+  <li><strong>容错</strong>：ClickHouse支持多主机异步复制，并且可以跨多个数据中心进行部署。所有节点都相等，这可以避免出现单点故障。单个节点或整个数据中心的停机时间不会影响系统的读写可用性。</li>
+  <li><strong>可伸缩</strong>：ClickHouse可以在垂直和水平方向上很好地缩放。 ClickHouse易于调整以在具有数百或数千个节点的群集上或在单个服务器上，甚至在小型虚拟机上执行。当前，每个单节点安装的数据量超过数万亿行或数百兆兆字节。</li>
+  <li><strong>易用</strong>：ClickHouse简单易用，开箱即用。它简化了所有数据处理：将所有结构化数据吸收到系统中，并且立即可用于构建报告。 SQL允许表达期望的结果，而无需涉及某些DBMS中可以找到的任何自定义非标准API。</li>
+</ul>
+
+<h2 id="2clickhouse安装教程">2.ClickHouse安装教程</h2>
+
+<p>ClickHouse 可以在任何具有 x86_64 ，AArch64 或 PowerPC64LE CPU 架构的 Linux ，FreeBSD 或 Mac OS X 上运行。貌似不能在 Windows 系统下安装，不过 ClickHouse 同样支持 Docker 部署，Windows 系统可以在 Docker 下安装 ClickHouse 。</p>
+
+<p>下面以CentOS系统为例，以rpm方式来安装ClickHouse。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28</pre></td><td class="code"><pre class="highlight"><code><span class="c"># 查看系统版本</span>
+<span class="o">[</span>root@master ~]# more /etc/redhat-release 
+CentOS Linux release 7.9.2009 <span class="o">(</span>Core<span class="o">)</span>
+
+<span class="c"># 检测当前CPU是否支持SSE 4.2</span>
+<span class="o">[</span>root@master ~]# <span class="nb">grep</span> <span class="nt">-q</span> sse4_2 /proc/cpuinfo <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"SSE 4.2 supported"</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">"SSE 4.2 not supported"</span>
+SSE 4.2 supported
+
+<span class="c"># 添加官方存储库</span>
+<span class="nb">sudo </span>yum install yum-utils
+<span class="nb">sudo </span>rpm <span class="nt">--import</span> https://repo.clickhouse.tech/CLICKHOUSE-KEY.GPG
+<span class="nb">sudo </span>yum-config-manager <span class="nt">--add-repo</span> https://repo.clickhouse.tech/rpm/stable/x86_64
+
+<span class="c"># 安装clickhouse</span>
+<span class="nb">sudo </span>yum install clickhouse-server clickhouse-client
+
+<span class="c"># 启动clickhouse</span>
+<span class="nb">sudo</span> /etc/init.d/clickhouse-server start
+
+<span class="c"># 进入clickhouse客户端</span>
+<span class="o">[</span>root@master ~]# clickhouse-client
+ClickHouse client version 21.12.3.32 <span class="o">(</span>official build<span class="o">)</span><span class="nb">.</span>
+Connecting to localhost:9000 as user default.
+Connected to ClickHouse server version 21.12.3 revision 54452.
+
+<span class="c"># 开启远程连接</span>
+
+
+</code></pre></td></tr></tbody></table></div></div>
+
 
 
       
@@ -413,18 +480,14 @@
         <div class="post-nav" id="post-nav-id">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2013/12/27/images/" rel="next" title="Images">
-                <i class="fa fa-chevron-left"></i> Images
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/foo/2013/12/25/block/" rel="prev" title="Block">
-                Block <i class="fa fa-chevron-right"></i>
+              <a href="/test/2017/07/19/highlight-test/" rel="prev" title="Highlight Test">
+                Highlight Test <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -481,8 +544,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/assets/images/avatar.gif"
@@ -553,6 +625,34 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#1clickhouse简介"> <span class="nav-number">1</span> <span class="nav-text">1.ClickHouse简介</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#2clickhouse安装教程"> <span class="nav-number">2</span> <span class="nav-text">2.ClickHouse安装教程</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
