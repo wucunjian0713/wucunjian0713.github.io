@@ -7,7 +7,7 @@ tags:
 
 `ClickHouse`是一个用于联机分析 (`OLAP`) 的列式数据库管理系统 (`DBMS`). 由俄罗斯搜索引擎巨头 Yandex 开源. 主要用于数据分析领域, 目前国内社区火热, 各个大厂纷纷跟进大规模用于 OLAP 领域。
 
-## 1.ClickHouse简介
+## ClickHouse简介
 
 `ClickHouse`是一个用于联机分析 (`OLAP`) 的列式数据库管理系统 (`DBMS`). 由俄罗斯搜索引擎巨头 Yandex 开源. 主要用于数据分析领域, 目前国内社区火热, 各个大厂纷纷跟进大规模用于 OLAP 领域。
 
@@ -18,7 +18,7 @@ ClickHouse官网上面介绍的特性：
 - **可伸缩**：ClickHouse可以在垂直和水平方向上很好地缩放。 ClickHouse易于调整以在具有数百或数千个节点的群集上或在单个服务器上，甚至在小型虚拟机上执行。当前，每个单节点安装的数据量超过数万亿行或数百兆兆字节。
 - **易用**：ClickHouse简单易用，开箱即用。它简化了所有数据处理：将所有结构化数据吸收到系统中，并且立即可用于构建报告。 SQL允许表达期望的结果，而无需涉及某些DBMS中可以找到的任何自定义非标准API。
 
-## 2.ClickHouse安装教程
+## ClickHouse安装教程
 
 ClickHouse 可以在任何具有 x86_64 ，AArch64 或 PowerPC64LE CPU 架构的 Linux ，FreeBSD 或 Mac OS X 上运行。貌似不能在 Windows 系统下安装，不过 ClickHouse 同样支持 Docker 部署，Windows 系统可以在 Docker 下安装 ClickHouse 。
 

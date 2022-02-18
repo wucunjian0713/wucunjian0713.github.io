@@ -1,0 +1,1117 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="猛虎射东风的博客园" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HBase 是 BigTable 的开源（源码使用 Java 编写）版本。是 Apache Hadoop 的数据库，是建立在 HDFS 之上，被设计用来提供高可靠性、高性能、列存储、可伸缩、多版本的 NoSQL 的分布式数据存储系统，实现对大型数据的实时、随机的读写访问。">
+<meta name="keywords" content="Jekyll, NexT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HBase简介与安装">
+<meta property="og:url" content="http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%BA%93/2022/01/30/HBase%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/">
+<meta property="og:site_name" content="猛虎射东风的博客园">
+<meta property="og:description" content="HBase 是 BigTable 的开源（源码使用 Java 编写）版本。是 Apache Hadoop 的数据库，是建立在 HDFS 之上，被设计用来提供高可靠性、高性能、列存储、可伸缩、多版本的 NoSQL 的分布式数据存储系统，实现对大型数据的实时、随机的读写访问。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/pictures/image-20210922101341529.png">
+<meta property="og:image" content="/pictures/image-20210919151244642.png">
+<meta property="og:image" content="/pictures/image-20210919150457322.png">
+<meta property="og:image" content="/pictures/image-20210919150618063.png">
+<meta property="og:image" content="/pictures/image-20210919151201172.png">
+<meta property="og:image" content="/pictures/image-20210919163540296.png">
+<meta property="og:image" content="/pictures/image-20210919163801825.png">
+<meta property="og:image" content="/pictures/image-20210919164326389.png">
+<meta property="og:image" content="/pictures/image-20210919164429083.png">
+<meta property="og:image" content="/pictures/image-20210919164742240.png">
+<meta property="og:image" content="/pictures/image-20210919183614883.png">
+<meta property="og:image" content="/pictures/image-20210919183713881.png">
+<meta property="og:image" content="/pictures/image-20210919183836994.png">
+<meta property="og:image" content="/pictures/image-20210919183930315.png">
+<meta property="og:image" content="/pictures/image-20210919184348522.png">
+<meta property="og:image" content="/pictures/image-20210919184441839.png">
+<meta property="og:image" content="/pictures/image-20210919215426919.png">
+<meta property="og:image" content="/pictures/image-20210919215136765.png">
+<meta property="og:image" content="/pictures/image-20210919223451510.png">
+<meta property="og:image" content="/pictures/image-20210919214500796.png">
+<meta property="og:image" content="/pictures/image-20210919214809497.png">
+<meta property="og:image" content="/pictures/image-20210919225149837.png">
+<meta property="og:image" content="/pictures/image-20210919225559773.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HBase简介与安装">
+<meta name="twitter:description" content="HBase 是 BigTable 的开源（源码使用 Java 编写）版本。是 Apache Hadoop 的数据库，是建立在 HDFS 之上，被设计用来提供高可靠性、高性能、列存储、可伸缩、多版本的 NoSQL 的分布式数据存储系统，实现对大型数据的实时、随机的读写访问。">
+<meta name="twitter:image" content="/pictures/image-20210922101341529.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>HBase简介与安装 | 猛虎射东风的博客园</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">猛虎射东风的博客园</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%BA%93/2022/01/30/HBase%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WuCunJian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="assets/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="猛虎射东风的博客园">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            HBase简介与安装
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-30T00:00:00+08:00">
+                2022-01-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/%E6%95%B0%E6%8D%AE%E5%BA%93" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <p><code class="highlighter-rouge">HBase</code> 是 BigTable 的开源（源码使用 Java 编写）版本。是 Apache Hadoop 的数据库，是建立在 HDFS 之上，被设计用来提供<code class="highlighter-rouge">高可靠性</code>、<code class="highlighter-rouge">高性能</code>、<code class="highlighter-rouge">列存储</code>、<code class="highlighter-rouge">可伸缩</code>、多版本的 <code class="highlighter-rouge">NoSQL</code> 的分布式数据存储系统，实现对大型数据的实时、随机的读写访问。</p>
+
+<h2 id="产生背景">产生背景</h2>
+
+<p>自 1970 年以来，关系数据库用于数据存储和维护有关问题的解决方案。大数据的出现后， 好多公司实现处理大数据并从中受益，并开始选择像 Hadoop 的解决方案。Hadoop 使用分 布式文件系统，用于存储大数据，并使用 MapReduce 来处理。Hadoop 擅长于存储各种格式 的庞大的数据，任意的格式甚至非结构化的处理。</p>
+
+<h3 id="hadoop-的限制">Hadoop 的限制</h3>
+
+<p>Hadoop 只能执行批量处理，并且只以顺序方式访问数据。这意味着必须搜索整个数据集， 即使是最简单的搜索工作。 当处理结果在另一个庞大的数据集，也是按顺序处理一个巨大的数据集。在这一点上，一个 新的解决方案，需要访问数据中的任何点（随机访问）单元。</p>
+
+<p>Hadoop 随机存取数据库</p>
+
+<p>应用程序，如 HBase，Cassandra，CouchDB，Dynamo 和 MongoDB 都是一些存储大量数据和 以随机方式访问数据的数据库。</p>
+
+<p>总结：</p>
+
+<p>（1）海量数据量存储成为瓶颈，单台机器无法负载大量数据</p>
+
+<p>（2）单台机器 IO 读写请求成为海量数据存储时候高并发大规模请求的瓶颈</p>
+
+<p>（3）随着数据规模越来越大，大量业务场景开始考虑数据存储横向水平扩展，使得存储服 务可以增加/删除，而目前的关系型数据库更专注于一台机器</p>
+
+<h2 id="hbase简介">HBase简介</h2>
+
+<p><strong>HBase 是 BigTable 的开源（源码使用 Java 编写）版本。是 Apache Hadoop 的数据库，是建 立在 HDFS 之上，被设计用来提供高可靠性、高性能、列存储、可伸缩、多版本的 NoSQL 的分布式数据存储系统，实现对大型数据的实时、随机的读写访问。</strong></p>
+
+<p><strong>HBase 依赖于 HDFS 做底层的数据存储，BigTable 依赖 Google GFS 做数据存储</strong></p>
+
+<p><strong>HBase 依赖于 MapReduce 做数据计算，BigTable 依赖 Google MapReduce 做数据计算</strong></p>
+
+<p><strong>HBase 依赖于 ZooKeeper 做服务协调，BigTable 依赖 Google Chubby 做服务协调</strong></p>
+
+<p>NoSQL = NO SQL</p>
+
+<p>NoSQL = Not Only SQL：会有一些把 NoSQL 数据的原生查询语句封装成 SQL，比如 HBase 就有 Phoenix 工具</p>
+
+<h2 id="常见关系型和非关系数据库">常见关系型和非关系数据库</h2>
+
+<p>NoSQL:hbase,redis,mongodb</p>
+
+<p>RDBMS:mysql,oracle,sql server,db2</p>
+
+<h2 id="hbase数据库的要点">HBase数据库的要点</h2>
+
+<ul>
+  <li>它介于NoSQL和RDBMS之间，仅能通过主键(rowkey)和主键的range来检索数据</li>
+  <li>Hbase查询数据功能很简单，不支持join等复杂操作</li>
+  <li>不支持复杂的事务，只支持行级事务（可通过hive支持来实现对表join等复杂操作）。</li>
+  <li>HBase中支持的数据类型：byte[]（底层所有数据的存储都是字节数组）</li>
+  <li>主要用来存储结构化和半结构化的松散数据。</li>
+</ul>
+
+<h2 id="结构化半结构化和半结构化">结构化,半结构化和半结构化</h2>
+
+<p><strong>结构化</strong>：数据结构字段含义确定，清晰，典型的如数据库中的表结构</p>
+
+<p><strong>半结构化</strong>：具有一定结构，但语义不够确定，典型的如 HTML 网页，有些字段是确定的(title)， 有些不确定(table)</p>
+
+<p><strong>非结构化</strong>：杂乱无章的数据，很难按照一个概念去进行抽取，无规律性</p>
+
+<p>与 Hadoop 一样，HBase 目标主要依靠横向扩展，通过不断增加廉价的商用服务器，来增加 计算和存储能力。</p>
+
+<h2 id="hbase中的表特点">HBase中的表特点</h2>
+
+<ol>
+  <li><strong>大：</strong>一个表可以有上十亿行，上百亿列</li>
+  <li><strong>面向列：</strong>面向列(族)的存储和权限控制，列(族)独立索引</li>
+  <li><strong>稀疏：</strong>对于为空(null)的列，并不占用存储空间，因此，表可以设计的非常稀疏</li>
+  <li><strong>无模式：</strong>每行都有一个可排序的主键和任意多的列，列可以根据需要动态的增加，同一 张表中不同的行可以有截然不同的列</li>
+</ol>
+
+<h2 id="hbase表结构的逻辑视图">Hbase表结构的逻辑视图</h2>
+
+<h3 id="名词概念"><strong>名词概念</strong></h3>
+
+<p><img src="/pictures/image-20210922101341529.png" alt="image-20210922101341529" style="zoom:50%;" /></p>
+
+<h3 id="rowkey的概念"><strong>Rowkey的概念</strong></h3>
+
+<p><strong>Rowkey的概念和mysql中的主键是完全一样的，Hbase使用Rowkey来唯一的区分某一行的数据。</strong></p>
+
+<p>由于Hbase只支持3中查询方式：</p>
+
+<p>1、基于Rowkey的单行查询</p>
+
+<p>2、基于Rowkey的范围扫描</p>
+
+<p>3、全表扫描</p>
+
+<p>因此，Rowkey对Hbase的性能影响非常大，Rowkey的设计就显得尤为的重要。设计的时候要兼顾基于Rowkey的单行查询也要键入Rowkey的范围扫描。具体Rowkey要如何设计后续会整理相关的文章做进一步的描述。这里大家只要有一个概念就是Rowkey的设计极为重要。</p>
+
+<p>rowkey 行键可以是任意字符串(最大长度是 <strong>64KB</strong>，实际应用中长度一般为 10-100bytes)，最好是 16。在 HBase 内部，rowkey 保存为字节数组。<strong>HBase 会对表中的数据按照 rowkey 排序 (字典顺序)</strong></p>
+
+<h3 id="column的概念"><strong>Column的概念</strong></h3>
+
+<p>列。类似于MySql的列</p>
+
+<h3 id="columnfamily的概念"><strong>ColumnFamily的概念</strong></h3>
+
+<p>列族，HBase引入的概念。</p>
+
+<p>Hbase表创建的时候就必须指定列族，就像关系型数据库创建的时候必须制定具体的列一样。</p>
+
+<p>Hbase通过列族划分数据的存储，列族下面可以包含任意多的列，实现灵活的数据存取。就像是家族的概念，我们知道一个家族是由于很多个的家庭组成的。列族也类似，列族是由一个一个的列组成（任意多）。</p>
+
+<p>Hbase的列族不是越多越好，官方推荐的是列族最好小于或者等于3。我们使用的场景一般是1个列族。</p>
+
+<h3 id="timestamp的概念"><strong>TimeStamp的概念</strong></h3>
+
+<p>TimeStamp是HBase实现多版本存储的关键。在HBase中通过不同的TimeStamp来标识相同rowkey行对应的不同版本的数据。</p>
+
+<p>Hbase中通过rowkey和columns确定的一个存储单元称为Cell。每一个Cell都保存蛰同一个数据的多个版本。版本通过时间戳来索引。时间戳的类型是64位整型。时间戳可以由Hbase自动生成，也可以添加数据的时候显示填写。Hbase自动生成的时间戳精确到毫秒的当前系统时间。时间戳也可以由客户显现赋值，为了避免数据版本冲突 ，要保证生成唯一性的时间戳。每个Cell中，不同版本的数据按照时间进行倒序排列，最新的数据在最上面。</p>
+
+<p><strong>HBase给我们提供了两种数据版本回收方式：</strong></p>
+
+<ol>
+  <li>保存数据的最后N个版本</li>
+  <li>保存最近一段时间内的版本（设置数据的生命周期TTL）</li>
+</ol>
+
+<h3 id="单元格cell"><strong>单元格(Cell)</strong></h3>
+
+<p>由{rowkey,column(=+),value}唯一确定的单元。Cell中的数据是没有数据类型，全部通过字节码进行存储</p>
+
+<h2 id="hbase基础操作">HBase基础操作</h2>
+
+<h3 id="启动shell命令界面hbase-shell"><strong>启动shell命令界面：hbase shell</strong></h3>
+
+<p><img src="/pictures/image-20210919151244642.png" alt="image-20210919151244642" style="zoom:50%;" /></p>
+
+<h3 id="查看命令帮助文档help">查看命令帮助文档：help</h3>
+
+<ol>
+  <li>
+    <p>命令格式1:help  		在shell窗口输入help，按下回车，将现实所有命令信息</p>
+
+    <p><img src="/pictures/image-20210919150457322.png" alt="image-20210919150457322" style="zoom:50%;" /></p>
+  </li>
+  <li>
+    <p>命令格式1: help  ‘命令’     例如：查看create命令的说明，输入： help ‘create’</p>
+
+    <p><img src="/pictures/image-20210919150618063.png" alt="image-20210919150618063" style="zoom:50%;" /></p>
+  </li>
+</ol>
+
+<h3 id="退出shell界面命令quit或exit"><strong>退出shell界面命令：quit或exit</strong></h3>
+
+<p><img src="/pictures/image-20210919151201172.png" alt="image-20210919151201172" style="zoom:50%;" /></p>
+
+<h3 id="创建表命令create"><strong>创建表命令：create</strong></h3>
+
+<ol>
+  <li>
+    <p>命令格式1:create ‘表名称’,’列族1’,’列族2’,….</p>
+
+    <p>例如 ：创建 表名称 为 student ，列 族 1 为 base_info,列族 2 为 class_info, 列族 3 为other_info 的表。</p>
+
+    <p>输入命令：create ‘student’,’base_info’,’class_info’,’other_info’ 按回车</p>
+
+    <p><img src="/pictures/image-20210919163540296.png" alt="image-20210919163540296" /></p>
+  </li>
+  <li>
+    <p>create ‘表名称’, {NAME =&gt; ‘列族 1’}, {NAME =&gt; ‘列族 2’}, {NAME =&gt; ‘列族 3’,……}</p>
+
+    <p>例如：创建表名称为 school，列族 1 为 base_info，列族 2 为 teacher_info，列族 3 为 student_info 的表。</p>
+
+    <p>输入命令 ： create ‘school’, {NAME =&gt; ‘base_info’}, {NAME =&gt; ‘teacher_info’}, {NAME =&gt; ‘student_info’}
+<img src="/pictures/image-20210919163801825.png" alt="image-20210919163801825" /></p>
+  </li>
+</ol>
+
+<h3 id="列出所有表命令list"><strong>列出所有表命令：list</strong></h3>
+
+<p><img src="/pictures/image-20210919164326389.png" alt="image-20210919164326389" style="zoom:50%;" /></p>
+
+<h3 id="查看表结构信息命令describe-或-desc"><strong>查看表结构信息命令：describe 或 desc</strong></h3>
+
+<p><img src="/pictures/image-20210919164429083.png" alt="image-20210919164429083" style="zoom:50%;" /></p>
+
+<h3 id="查看表数据命令scan"><strong>查看表数据命令：scan</strong></h3>
+
+<p><img src="/pictures/image-20210919164742240.png" alt="image-20210919164742240" style="zoom:50%;" /></p>
+
+<h3 id="插入修改或更新数据命令put"><strong>插入、修改或更新数据命令：put</strong></h3>
+
+<p>Hbase 修改或者更新数据实质上也是添加新数据，只是旧版本的数据没有被显示出来或者 已经被清除。</p>
+
+<p>插入数据命令格式：put ‘表名’，‘行值’，‘列族：列名’，‘数据’</p>
+
+<p>例如 1：向表 stduent 中行 1，列族 base_info 加入列 name，添加数据 wucunjian</p>
+
+<p>输入命令： put ‘student’,’1’,’base_info:name’,wucunjian’</p>
+
+<p><img src="/pictures/image-20210919183614883.png" alt="image-20210919183614883" style="zoom:50%;" /></p>
+
+<p>添加完成的效果：</p>
+
+<p><img src="/pictures/image-20210919183713881.png" alt="image-20210919183713881" style="zoom:50%;" /></p>
+
+<p>例如 2：向表 stduent 中行 1，列族 class_info 加入列 grade，添加数据 2021</p>
+
+<p>输入命令： put ‘student’,’1’,’class_info:grade’,’2021’ 按回车，显示结果如下：</p>
+
+<p><img src="/pictures/image-20210919183836994.png" alt="image-20210919183836994" /></p>
+
+<p>添加完成的效果：</p>
+
+<p><img src="/pictures/image-20210919183930315.png" alt="image-20210919183930315" style="zoom:50%;" /></p>
+
+<h3 id="获取某一行数据命令get"><strong>获取某一行数据命令：get</strong></h3>
+
+<p>命令格式 1：get ‘表名’,’行’</p>
+
+<p>例如：查看表 stduent 中行 1 的数据</p>
+
+<p>输入命令：get ‘student’,’1’ 按回车，显示结果如下：</p>
+
+<p><img src="/pictures/image-20210919184348522.png" alt="image-20210919184348522" style="zoom:50%;" /></p>
+
+<p>命令格式 2：get ‘表名’,’行’,’列族:列’</p>
+
+<p>例如：查看表 stduent 中行 1，列族 base_info 中列 name 的数据</p>
+
+<p>输入命令：get ‘student’,’1’ , ‘base_info:name’ 按回车，显示结果如下：</p>
+
+<p><img src="/pictures/image-20210919184441839.png" alt="image-20210919184441839" style="zoom:50%;" /></p>
+
+<p>命令格式 3：get ‘表名’,’行’,{COLUMN=&gt;’列族’,VERSIONS=&gt;版本数 n} 获取某一行的某个列族最新的 n 个版本数据。</p>
+
+<p>列如：获取 student 表行 1，列族 class_info 最新 4 个版本的数据</p>
+
+<p>输入命令：get ‘student’,1,{COLUMN=&gt;’class_info’,VERSIONS=&gt;4}</p>
+
+<p><img src="/pictures/image-20210919215426919.png" alt="image-20210919215426919" style="zoom:50%;" /></p>
+
+<h3 id="删除制定单元格的数据命令delete"><strong>删除制定单元格的数据命令：delete</strong></h3>
+
+<p>命令格式：delete ‘表’，‘行’，‘列’，时间戳</p>
+
+<p>例如：删除 student 表行 1，列族 base_info 中 name 的数据</p>
+
+<p>输入命令：delete ‘student’,’2’,’class_info:grade’,1632071669244</p>
+
+<p><img src="/pictures/image-20210919215136765.png" alt="image-20210919215136765" style="zoom:50%;" /></p>
+
+<p>执行结果如下：</p>
+
+<p><img src="/pictures/image-20210919223451510.png" alt="image-20210919223451510" style="zoom:50%;" /></p>
+
+<p><strong>修改表结构，让字段存储三个版本信息</strong></p>
+
+<p><img src="/pictures/image-20210919214500796.png" alt="image-20210919214500796" style="zoom:50%;" /></p>
+
+<p>执行结果如下：</p>
+
+<p><img src="/pictures/image-20210919214809497.png" alt="image-20210919214809497" style="zoom:50%;" /></p>
+
+<h3 id="统计表中的行数命令count"><strong>统计表中的行数命令：count</strong></h3>
+
+<p>命令格式：count ‘表名’</p>
+
+<p>例如：查看 studen 表的行数</p>
+
+<p>输入命令：count ‘student’结果如下</p>
+
+<p><img src="/pictures/image-20210919225149837.png" alt="image-20210919225149837" style="zoom:50%;" /></p>
+
+<h3 id="清空表数据命令truncate"><strong>清空表数据命令：truncate</strong></h3>
+
+<p>命令格式：truncate ‘表名’</p>
+
+<p>例如：清空表 tb2 的数据</p>
+
+<p>输入命令：truncate ‘tb2’，命令执行前后用 scan 查看表数据，如下图</p>
+
+<p><img src="/pictures/image-20210919225559773.png" alt="image-20210919225559773" style="zoom:50%;" /></p>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/2022/02/17/ClickHouse%E5%88%9D%E8%AF%86/" rel="next" title="ClickHouse初始">
+                <i class="fa fa-chevron-left"></i> ClickHouse初始
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.gif"
+               alt="WuCunJian" />
+          <p class="site-author-name" itemprop="name">WuCunJian</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#产生背景"> <span class="nav-number">1</span> <span class="nav-text">产生背景</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#hadoop-的限制"> <span class="nav-number">1.1</span> <span class="nav-text">Hadoop 的限制</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#hbase简介"> <span class="nav-number">2</span> <span class="nav-text">HBase简介</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#常见关系型和非关系数据库"> <span class="nav-number">3</span> <span class="nav-text">常见关系型和非关系数据库</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#hbase数据库的要点"> <span class="nav-number">4</span> <span class="nav-text">HBase数据库的要点</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#结构化半结构化和半结构化"> <span class="nav-number">5</span> <span class="nav-text">结构化,半结构化和半结构化</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#hbase中的表特点"> <span class="nav-number">6</span> <span class="nav-text">HBase中的表特点</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#hbase表结构的逻辑视图"> <span class="nav-number">7</span> <span class="nav-text">Hbase表结构的逻辑视图</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#名词概念"> <span class="nav-number">7.1</span> <span class="nav-text">名词概念</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#rowkey的概念"> <span class="nav-number">7.2</span> <span class="nav-text">Rowkey的概念</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#column的概念"> <span class="nav-number">7.3</span> <span class="nav-text">Column的概念</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#columnfamily的概念"> <span class="nav-number">7.4</span> <span class="nav-text">ColumnFamily的概念</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#timestamp的概念"> <span class="nav-number">7.5</span> <span class="nav-text">TimeStamp的概念</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#单元格cell"> <span class="nav-number">7.6</span> <span class="nav-text">单元格(Cell)</strong</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#hbase基础操作"> <span class="nav-number">8</span> <span class="nav-text">HBase基础操作</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#启动shell命令界面hbase-shell"> <span class="nav-number">8.1</span> <span class="nav-text">启动shell命令界面：hbase shell</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#查看命令帮助文档help"> <span class="nav-number">8.2</span> <span class="nav-text">查看命令帮助文档：help</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#退出shell界面命令quit或exit"> <span class="nav-number">8.3</span> <span class="nav-text">退出shell界面命令：quit或exit</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#创建表命令create"> <span class="nav-number">8.4</span> <span class="nav-text">创建表命令：create</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#列出所有表命令list"> <span class="nav-number">8.5</span> <span class="nav-text">列出所有表命令：list</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#查看表结构信息命令describe-或-desc"> <span class="nav-number">8.6</span> <span class="nav-text">查看表结构信息命令：describe 或 desc</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#查看表数据命令scan"> <span class="nav-number">8.7</span> <span class="nav-text">查看表数据命令：scan</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#插入修改或更新数据命令put"> <span class="nav-number">8.8</span> <span class="nav-text">插入、修改或更新数据命令：put</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#获取某一行数据命令get"> <span class="nav-number">8.9</span> <span class="nav-text">获取某一行数据命令：get</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#删除制定单元格的数据命令delete"> <span class="nav-number">8.10</span> <span class="nav-text">删除制定单元格的数据命令：delete</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#统计表中的行数命令count"> <span class="nav-number">8.11</span> <span class="nav-text">统计表中的行数命令：count</strong</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#清空表数据命令truncate"> <span class="nav-number">8.12</span> <span class="nav-text">清空表数据命令：truncate</strong</span> </a> </li> </ol> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WuCunJian</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://jekyllrb.com">Jekyll</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
